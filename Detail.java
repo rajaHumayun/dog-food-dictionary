@@ -81,7 +81,7 @@ private static final String KEY = "facebook-credentials";
 			pullParserFactory = XmlPullParserFactory.newInstance();
 			XmlPullParser parser = pullParserFactory.newPullParser();
 
-			    InputStream in_s = getApplicationContext().getAssets().open(file+".txt");
+			    InputStream in_s = getApplicationContext().getAssets().open(file+".html");
 		        parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
 	           
 //		        BufferedReader reader = new BufferedReader(new InputStreamReader(in_s));
@@ -121,7 +121,7 @@ private static final String KEY = "facebook-credentials";
 		ArrayList<Drug> Drugs = null;
         int eventType = parser.getEventType();
         Drug currentProduct = null;
-int i=0;
+        int i=0;
         while (eventType != XmlPullParser.END_DOCUMENT){
             String name = null;
         
@@ -131,14 +131,14 @@ int i=0;
                     break;
                 case XmlPullParser.START_TAG:
                     name = parser.getName();
-                    if (name.equals("h1"))
+                    if (name.equals("h2"))
                     {
                     	 // currentProduct = new Drug();
                         String s=parser.nextText();
                     	heading.setText(s);
                          data="    "+s+"\n\n";
                       
-                    } else if (name.equals("h2")){
+                    } else if (name.equals("h3")){
 //                    	h2=(TextView)findViewById(R.id.textView22);
 //                           h2.setText(parser.nextText());
                     //	data=data+parser.nextText()+"\n";

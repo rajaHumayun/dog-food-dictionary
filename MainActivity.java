@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 			pullParserFactory = XmlPullParserFactory.newInstance();
 			XmlPullParser parser = pullParserFactory.newPullParser();
 
-			    InputStream in_s = getApplicationContext().getAssets().open("pills.xml");
+			    InputStream in_s = getApplicationContext().getAssets().open("dogfood.txt");
 		        parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
 	            parser.setInput(in_s, null);
 
@@ -125,10 +125,10 @@ void showitems(){
                     break;
                 case XmlPullParser.START_TAG:
                     name = parser.getName();
-                    if (name.equals("pills")){
+                    if (name.equals("dogfoods")){
                         currentProduct = new Drug();
                     } else if (currentProduct != null){
-                        if (name.equals( "pill")){
+                        if (name.equals( "dogfood")){
                             currentProduct.name = parser.getAttributeValue(0);
                       
                         	currentProduct.id = parser.getAttributeValue(1);
@@ -142,7 +142,7 @@ void showitems(){
                 case XmlPullParser.END_TAG:
                     name = parser.getName();
                    
-                    if (name.equalsIgnoreCase("pill") && currentProduct != null){
+                    if (name.equalsIgnoreCase("dogfood") && currentProduct != null){
                     	Drugs.add(currentProduct);
                     } 
             }
